@@ -22,6 +22,8 @@ class ConcurrentRubyThreadTest
 
   def submitTask(idx)
     @pool.post do
+
+      puts "Thread name: #{Thread.current.to_s}"
       sleep(1)
       puts "ConcurrentRuby | Done (#{@req_amt} threads completed) | Time taken = #{Time.now - @start_time} seconds." if (@count.increment == @req_amt)
     end
